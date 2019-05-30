@@ -1,0 +1,15 @@
+#
+# CIP Core tiny profile
+# kas configuration for QEMU x86 64bit
+#
+# Copyright (c) 2019 TOSHIBA Corp.
+#
+# SPDX-License-Identifier: MIT
+#
+
+header:
+  version: 8
+  includes:
+    - kas.yml
+
+machine: qemux86-64
