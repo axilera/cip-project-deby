@@ -27,3 +27,14 @@ repos:
     refspec: e87428eec5edfa6ec741eed8827d7044df043625
 
 distro: deby-tiny
+
+# TODO: The following definitions in local.conf of meta-debian
+# should be fixed and defined another place (e.g. distro.conf)
+# because local.conf should contains definitions that users
+# want to override (to change the default behavior).
+local_conf_header:
+  meta-cip-core-buster: |
+    PACKAGE_CLASSES = "package_deb"
+    EXTRA_IMAGE_FEATURES = "debug-tweaks"
+    USER_CLASSES = "buildstats image-mklibs image-prelink"
+    PATCHRESOLVE = "noop"
