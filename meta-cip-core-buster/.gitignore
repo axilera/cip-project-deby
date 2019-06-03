@@ -1,3 +1,4 @@
+kas-docker
 poky
 meta-debian
-build
+build*
