@@ -1,4 +1,12 @@
 #!/bin/sh
+#
+# CIP Core tiny profile
+# A helper script to easily run images on QEMU targets
+#
+# Copyright (c) 2019 TOSHIBA Corp.
+#
+# SPDX-License-Identifier: MIT
+#
 
 usage() {
 	echo "Usage: ${0} <MACHINE> [QEMU_OPTS]"
@@ -18,6 +26,7 @@ case "${MACHINE}" in
 		KERNEL=${DEPLOY_DIR}/bzImage
 		INITRD=${DEPLOY_DIR}/core-image-minimal-${MACHINE}.cpio.gz
 		APPEND="console=ttyS0"
+		QEMU_OPTS="-M q35"
 		;;
 	*)
 		echo "Invalid MACHINE"
