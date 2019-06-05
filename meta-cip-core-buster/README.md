@@ -23,8 +23,8 @@ Supported Hardware
 
 The following boards are supported in this layer.
 
-* QEMU
-    * `qemux86-64`: x86 64bit (Q35 machine)
+* `qemux86-64`: QEMU x86 64bit (Q35 machine)
+* `bbb`: BeagleBone Black
 
 Build Target Images
 ===================

@@ -1,0 +1,26 @@
+#
+# CIP Core tiny profile
+# kas configuration for BeagleBone Black
+#
+# Copyright (c) 2019 TOSHIBA Corp.
+#
+# SPDX-License-Identifier: MIT
+#
+
+header:
+  version: 8
+  includes:
+    - kas.yml
+
+repos:
+  meta-ti:
+    url: "https://git.yoctoproject.org/git/meta-ti"
+    refspec: 59e66caff2568ab32f59596f1aeab8ea27649941
+
+machine: beaglebone
+
+# TODO: Should be moved to the BSP adjusting layer in meta-debian
+local_conf_header:
+  bbb: |
+    LINUX_DEFCONFIG = "omap2plus_defconfig"
+    KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
