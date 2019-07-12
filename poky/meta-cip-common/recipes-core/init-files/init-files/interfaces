@@ -1,9 +1,0 @@
-# Copyright (C) 2016-2018, TOSHIBA Corp., Daniel Sangorrin <daniel.sangorrin@toshiba.co.jp>
-# SPDX-License-Identifier:	MIT
-auto lo
-iface lo inet loopback
-
-auto eth0
-iface eth0 inet static
-address 192.168.1.55
-netmask 255.255.255.0

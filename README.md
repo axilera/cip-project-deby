@@ -1,53 +1,55 @@
-README
-======
+CIP Core (Tiny Profile) with Debian 10 buster
+=============================================
 
-Overview
---------
+This layer provides recipes to generate CIP core tiny profile images
+based on Debian 10 buster userland packages.
 
-This folder contains the Deby-based reference implementation of the
-CIP Core project for multiple boards. Deby is a reference distribution 
-built with poky and meta-debian, a layer for the poky build system that 
-allows cross-building file system images from Debian stable source 
-packages.
+Supported Software
+==================
 
-Goal
-  * Input: Debian and CIP kernel source code
-  * Build mechanism: bitbake with meta-debian
-  * Output: Minimum deployable CIP base system
+The build targets of this layer are the following kernel and userland versions.
 
-Supported boards
-----------------
+* Kernel:
+    * [linux-4.19.y-cip](https://git.kernel.org/pub/scm/linux/kernel/git/cip/linux-cip.git/log/?h=linux-4.19.y-cip)
+    * [linux-4.19.y-cip-rt](https://git.kernel.org/pub/scm/linux/kernel/git/cip/linux-cip.git/log/?h=linux-4.19.y-cip-rt)
+* Userland: Debian 10 buster
 
-The list of supported boards for a specific version can be obtained by 
-using `ls deby/poky/meta-cip-*`.
+All recipes in this layer are compatible with the following Yocto Project version.
 
-Currently, the following boards are supported:
-  * iWave RZ/G1M Qseven Development Kit
-  * Beaglebone Black
-  * DE0-Nano-SoC Kit/Atlas-SoC Kit
-  * QEMU x86_64
+* Yocto Project 2.7 (warrior)
 
-Generic build instructions
---------------------------
+Supported Hardware
+==================
 
-To build the file system image for a specific board you need to
-prepare a [KAS](https://github.com/siemens/kas) docker environment.
-Make sure that your docker is using the overlay2 storage driver and
-your host kernel supports overlayfs.
+The following boards are supported in this layer.
 
+* `qemux86-64`: QEMU x86 64bit (Q35 machine)
+* `bbb`: BeagleBone Black
 
-```shell
-host$ docker run -v $PWD/deby:/deby -e USER_ID=`id -u $USER` -e http_proxy=$http_proxy -e https_proxy=$https_proxy -e NO_PROXY="$no_proxy" -it kasproject/kas:0.13.0 sh
-docker$ cd /deby/poky/
-```
+Build Target Images
+===================
 
-To build the file system image use the corresponding kas project file. 
-For example, in case of the iWave RZ/G1M Qseven Development Kit:
+Select the target board from [Supported Hardware](#supported-hardware)
+and set it to `MACHINE` variable.
 
-```shell
-docker$ kas build --target core-image-minimal meta-cip-iwg20m/kas-iwg20m.yml
-```
+Example:
 
-For more detailed, instructions check the README file inside the
-corresponding `deby/poky/meta-cip-<board>` folder.
+    $ MACHINE=qemux86-64
 
+Setup the [kas](https://github.com/siemens/kas) docker script.
+
+    $ cd deby/meta-cip-core-buster
+    $ wget https://raw.githubusercontent.com/siemens/kas/master/kas-docker
+    $ chmod a+x kas-docker
+
+Build images with `kas-docker`.
+
+    $ ./kas-docker build kas-${MACHINE}.yml
+
+Run Images on the target board
+==============================
+
+QEMU
+----
+
+    $ ./start-qemu.sh ${MACHINE}

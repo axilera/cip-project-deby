@@ -1,8 +1,0 @@
-#!/bin/sh
-# Copyright (C) 2016-2018, TOSHIBA Corp., Daniel Sangorrin <daniel.sangorrin@toshiba.co.jp>
-# SPDX-License-Identifier:	MIT
-echo "Unmounting filesystem..."
-sync; sync; sync
-umount -a -f -r 2> /dev/null || true
-sync; sync; sync
-

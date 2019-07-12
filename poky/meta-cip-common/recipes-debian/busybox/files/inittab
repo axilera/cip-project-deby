@@ -1,5 +1,0 @@
-# Copyright (C) 2016-2018, TOSHIBA Corp., Daniel Sangorrin <daniel.sangorrin@toshiba.co.jp>
-# SPDX-License-Identifier:	MIT
-::sysinit:/etc/init.d/rcS
-::shutdown:/etc/init.d/rcE
-::ctrlaltdel:/sbin/reboot

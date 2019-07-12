@@ -11,10 +11,6 @@ header:
   version: 8
 
 repos:
-  deby:
-    layers:
-      meta-cip-core-buster:
-
   poky:
     url: "https://git.yoctoproject.org/git/poky"
     refspec: f2b442c5c8e3925a4d3fc9693f1e47863dade2a9
@@ -33,7 +29,7 @@ distro: deby-tiny
 # because local.conf should contains definitions that users
 # want to override (to change the default behavior).
 local_conf_header:
-  meta-cip-core-buster: |
+  base: |
     PACKAGE_CLASSES = "package_deb"
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
     USER_CLASSES = "buildstats image-mklibs image-prelink"
