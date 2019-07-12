@@ -13,9 +13,13 @@ header:
     - kas.yml
 
 repos:
+  meta-debian:
+    layers:
+      .:
+      bsp/meta-ti:
   meta-ti:
     url: "https://git.yoctoproject.org/git/meta-ti"
-    refspec: 59e66caff2568ab32f59596f1aeab8ea27649941
+    refspec: de9ee6d4fcc476e1a36834a7d5383ae03a227958
 
 machine: beaglebone
 
