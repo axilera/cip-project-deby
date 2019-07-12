@@ -8,7 +8,7 @@
 #
 
 header:
-  version: 8
+  version: 3
   includes:
     - kas.yml
 
