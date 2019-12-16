@@ -114,7 +114,7 @@ local_conf_header:
 
     # Mender
     INHERIT += "mender-full"
-    MENDER_ARTIFACT_NAME = "issue_308-2019121600"
+    MENDER_ARTIFACT_NAME = "issue_338-2019121600"
     PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils"
     MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
     MENDER_FEATURES_DISABLE_append = " mender-grub mender-image-uefi"
