@@ -1,0 +1,69 @@
+# Copyright (C) 2016-2017, Solidrun, Eric Bree <eric.bree@solid-run.com>
+# SPDX-License-Identifier:    MIT
+# CIP core kas solidsense global configuration
+header:
+    version: 7
+    includes:
+        - repo: meta-cip-sr-common
+          file: kas-sr-common-bgl.yml
+distro: deby
+env:
+    MENDER_ARTIFACT_NAME: "dev"
+repos:
+    meta-custom:
+        layers:
+            poky/meta-cip-common:
+    meta-cip-sr-common:
+        url: "https://github.com/SolidRun/meta-cip-sr-common.git"
+    meta-debian:
+        url: "https://github.com/meta-debian/meta-debian.git"
+        refspec: warrior
+        patches:
+            0001:
+                repo: meta-cip-sr-common
+                path: patches/meta-debian/0001-change-utmp-to-43.patch
+    meta-openembedded:
+        url: "https://github.com/openembedded/meta-openembedded.git"
+        refspec: warrior
+        layers:
+           meta-filesystems:
+           meta-networking:
+           meta-oe:
+           meta-python:
+    meta-virtualization:
+        url: "https://git.yoctoproject.org/git/meta-virtualization"
+        refspec: warrior
+    poky:
+        url: "https://git.yoctoproject.org/git/poky.git"
+        refspec: warrior
+        layers:
+            meta:
+            meta-poky:
+        patches:
+            0001:
+                repo: meta-cip-sr-common
+                path: patches/poky/0001-add-unzip.patch
+            0002:
+                repo: meta-cip-sr-common
+                path: patches/poky/0002-remove-bpf_perf_event_h.patch
+    meta-java:
+        url: "https://git.yoctoproject.org/git/meta-java"
+        refspec: warrior
+        patches:
+            0001:
+                repo: meta-cip-sr-common
+                path: patches/meta-java/0001-add-require-in-order-to-get-GCCVERSION.patch
+            0002:
+                repo: meta-cip-sr-common
+                path: patches/meta-java/0002-update-for-additional-gcc7-warnings.patch
+    meta-mender-core:
+        name: meta-mender
+        url: "https://github.com/mendersoftware/meta-mender.git"
+        refspec: warrior
+        layers:
+            meta-mender-core:
+    meta-readonly-rootfs-overlay:
+        url: "https://github.com/SolidRun/meta-readonly-rootfs-overlay"
+    meta-iot-cloud:
+        url: "https://github.com/intel-iot-devkit/meta-iot-cloud.git"
+        refspec: warrior
